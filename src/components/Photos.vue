@@ -8,9 +8,7 @@ const photoDatas: Ref<Photo[]> = ref([]);
 //TODO OpenAPIから自動化するやつやってみたい
 onMounted(async () => {
   const response = await axios
-    .get(
-      "https://gvmks7s963.execute-api.ap-northeast-1.amazonaws.com/showyourgear-dev-apis/photo"
-    )
+    .get(import.meta.env.VITE_API_ENDPOINT + "/photo") //vue-clieじゃなくてViteでの読み方
     .then((res: AxiosResponse<Photo[]>) => {
       photoDatas.value.push(...res.data);
     });
