@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { ref, Ref } from "vue";
+import { ref, Ref, onMounted } from "vue";
 import { Photo } from "./Photo";
+import axios, { AxiosResponse } from "axios";
 
-const photoDatas: Ref<Photo[]> = ref([
-  new Photo(
-    "https://shopping.line-scdn.net/0h2PjuYsiybX9XDHnqrGESKAVRcQ4hfTRoKDR3XSBJLU16OS8uOz0lTHUMMB8qOioqb2MkGiBbZE1ybCt5OWwqd3MNO0YvbiohaGMmHnIKdk97P30pPmly/r800",
-    200,
-    300
-  ),
-  new Photo(
-    "https://shopping.line-scdn.net/0h2PjuYsiybX9XDHnqrGESKAVRcQ4hfTRoKDR3XSBJLU16OS8uOz0lTHUMMB8qOioqb2MkGiBbZE1ybCt5OWwqd3MNO0YvbiohaGMmHnIKdk97P30pPmly/r800",
-    200,
-    300
-  ),
-]);
+const photoDatas: Ref<Photo[]> = ref([]);
+
+onMounted(async () => {
+  const response = await axios
+    .get(
+      "https://gvmks7s963.execute-api.ap-northeast-1.amazonaws.com/showyourgear-dev-apis/photo"
+    )
+    .then((res: AxiosResponse<Photo[]>) => {
+      photoDatas.value.push(...res.data);
+    });
+  console.log(response);
+});
 </script>
 
 <template>
