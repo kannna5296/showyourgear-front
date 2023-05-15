@@ -10,7 +10,7 @@ onMounted(async () => {
   const response = await axios
     .get(import.meta.env.VITE_API_ENDPOINT + "/photo") //vue-clieじゃなくてViteでの読み方
     .then((res: AxiosResponse<Photo[]>) => {
-      photoDatas.value.push(...res.data);
+      photoDatas.value.push(...res.data); //TODO トップ30件をとる + shuffle
     });
   console.log(response);
 });
