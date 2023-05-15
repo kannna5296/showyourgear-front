@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "build:local": "vite build --mode localhost",
+    "local": "vite --mode localhost",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
