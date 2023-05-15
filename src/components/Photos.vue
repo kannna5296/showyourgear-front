@@ -5,6 +5,7 @@ import axios, { AxiosResponse } from "axios";
 
 const photoDatas: Ref<Photo[]> = ref([]);
 
+//TODO OpenAPIから自動化するやつやってみたい
 onMounted(async () => {
   const response = await axios
     .get(
