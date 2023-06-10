@@ -27,11 +27,6 @@ onMounted(async () => {
         'flex-grow': (photo.width * 200) / photo.height,
       }"
     >
-      <i
-        :style="{
-          'padding-bottom': (photo.height / photo.width) * 100 + '%',
-        }"
-      ></i>
       <!-- <img
         :src="photo.src"
         @click="onClickPhoto(index)"
